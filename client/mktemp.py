@@ -15,7 +15,7 @@ a.close()
 a = open(name+".js","w")
 a.write("""
 //"""+name+"""
-Template.results.onCreated(function _OnCreated() {
+Template."""+name+""".onCreated(function _OnCreated() {
 
 });
 Template."""+name+""".events({

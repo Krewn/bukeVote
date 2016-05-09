@@ -2,11 +2,14 @@
 #loginNavElm{ 
 }
 #pageTitleNavElm{
-	padding-top: 1vw;
 	font-family: 'Bree Serif', serif;
 }
 #Nav-Title{
 
+}
+#Nav-Content{
+	background: tan;
+	background-color:tan;
 }
 
 	/*display: -webkit-flex;

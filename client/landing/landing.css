@@ -1,0 +1,23 @@
+#results{
+    width: auto;
+	height: 55vh;
+    background: lightslategray;
+	background-color: lightslategray;
+	
+}
+#feed{
+	width: auto;
+    overflow: hidden;
+	background: ghostwhite;
+	background-color: ghostwhite;
+	height: 100%;
+}
+#profile{
+	
+}
+
+.container {
+   height: auto;
+   overflow: hidden;
+}
+
