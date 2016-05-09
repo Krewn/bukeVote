@@ -33,6 +33,9 @@
 	  
 		
 	}
+	
+	lol ____ that.
+	xmlLeafFinder = /<[^<>\/]*>[a-zA-Z\n\t\s\d\.\r\v]+<\s*[\/][^<>]*>/m
 		
 };*/
 
