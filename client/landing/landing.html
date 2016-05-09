@@ -1,3 +1,26 @@
 <template name = "landing">
-
+	<head>
+		<title>bukeVote</title>
+	</head>
+	<body><!-- Next Step -> SCALE EVERYTHING !-->
+		{{>myNavbar}}
+		<div id = "results">
+		
+			<div id = "find">
+				 <input type="checkbox" id="BillsSelector" value="Bills"> <span>Bills</span>
+				 <input type="checkbox" id="CommentsSelector" value="Comments"><span>Comments</span>
+				 <input type="checkbox" id="VotesSelector" value="Votes"> <span>Votes</span>
+				 <input type="checkbox" id="AnnotationsSelector" value="Annotations"> <span>Annotations</span>
+				 <br><span contenteditable="true" id = "search">Search Here sorry For making you delete this longwinded place holder, I recomend ctrl+a</span>
+			</div>
+		</div>
+		
+		<div id = "feed">
+			<!-- Feed Filter !-->
+			<!-- Feed content !-->
+			<div id = "profile">
+				<!-- DisplayUserProfile !-->
+			</div>
+		</div>
+	</body>
 </template>
