@@ -21,7 +21,7 @@ iron:router
 meteorhacks:aggregate
 accounts-ui
 accounts-password
-twbs:bootstrap
 jcbernack:reactive-aggregate
 session
 reactive-dict
+twbs:bootstrap

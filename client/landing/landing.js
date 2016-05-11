@@ -1,8 +1,12 @@
 
-let matchArg = []
+let matchArg = [];
+let idRef = [];
+
 Template.landing.onCreated(function _OnCreated() {
 	this.q = new ReactiveVar();
 	this.q.set([]);
+	this.f = new ReactiveVar();
+	this.f.set(false);
 	const handle = Meteor.subscribe("Feed");
 });
 Template.landing.events({
@@ -27,11 +31,25 @@ Template.landing.events({
 			matchArg.push("annotation");
 		}
 		template.q.set(matchArg);
+		template.f.set(false);
+	},
+	'click .itemButton' : function(event, template){
+		//meteor.Collection.ObjectID().valueOf();
+		alert(event.target.value);
+		template.f.set(event.target.value);
 	}
 });
 Template.landing.helpers({
 	"foundItem": function(Tempalte){
 		return(items.find({'type':{$in:Template.instance().q.get()}}));
+	},
+	"UserFocus": function(Tempalte){
+		return(Template.instance().f.get()!=false);
+	},
+	"GetFocus": function(){
+		alert(Template.instance().f.get());
+		//return(items.find({'_id':Template.instacnce().f.get()}));
+		return(items.find());
 	}
 });
 

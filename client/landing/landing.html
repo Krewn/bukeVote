@@ -7,21 +7,27 @@
 	<body><!-- Next Step -> SCALE EVERYTHING !-->
 		{{>myNavbar}}
 		<div class = "container">
-			<div id = "results" class="container threeCol">
-				{{#each foundItem}}
-					<div class = "{{type}} itemButton" name = "{{_idref}}">
-						<h1>{{title}}</h1>
+				{{#if UserFocus}}
+					{{#each GetFocus}}
+						<span>
+						   {{{content}}}
+						</span>
+					{{/each}}
+				{{else}}
+					<div id = "results" class="container threeCol">
+						{{#each foundItem}}
+							{{>itemButton}}
+						{{/each}}
 					</div>
-				{{/each}}
+				{{/if}}
 				<div id = "find">
 					 <input type="checkbox" id="BillsSelector" value="Bills"> <span>Bills</span>
 					 <input type="checkbox" id="CommentsSelector" value="Comments"><span>Comments</span>
 					 <input type="checkbox" id="VotesSelector" value="Votes"> <span>Votes</span>
 					 <input type="checkbox" id="AnnotationsSelector" value="Annotations"> <span>Annotations</span>
-					 <br><span contenteditable="true" id = "searchText">Search Here sorry For making you delete this longwinded place holder, I recomend ctrl+a</span>
+					 <br><span contenteditable="true" id = "searchText">SearchHere</span>
 				</div>
 				<button type="button" id = "searchButton">Search</button>
-			</div>
 			<div id = "feed">
 				<h3>You and your associates:</h3>
 				<!--Feed tempalte needed!-->
