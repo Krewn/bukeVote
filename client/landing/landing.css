@@ -10,14 +10,25 @@
     overflow: hidden;
 	background: ghostwhite;
 	background-color: ghostwhite;
-	height: 100%;
+	height: auto;
 }
+#find{
+	float: right;
+}
+
 #profile{
 	
 }
 
 .container {
    height: auto;
-   overflow: hidden;
+}
+.threeCol{
+    -webkit-column-gap: 3vw;
+       -moz-column-gap: 3vw;
+            column-gap: 3vw;
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
 }
 

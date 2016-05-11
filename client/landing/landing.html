@@ -2,12 +2,17 @@
 	<head>
 		<title>bukeVote</title>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script> 
 	</head>
 	<body><!-- Next Step -> SCALE EVERYTHING !-->
 		{{>myNavbar}}
 		<div class = "container">
-			<div id = "results">
-				<!--results template needed!-->
+			<div id = "results" class="container threeCol">
+				{{#each foundItem}}
+					<div class = "{{type}}" name = "{{_idref}}">
+						<h1>{{title}}</h1>
+					</div>
+				{{/each}}
 				<div id = "find">
 					 <input type="checkbox" id="BillsSelector" value="Bills"> <span>Bills</span>
 					 <input type="checkbox" id="CommentsSelector" value="Comments"><span>Comments</span>
