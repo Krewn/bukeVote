@@ -1,6 +1,6 @@
 <template name = "landing">
 	<head>
-		<title>bukeVote</title>
+		<title>Focus</title>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script> 
 	</head>
@@ -9,9 +9,11 @@
 		<div class = "container">
 				{{#if UserFocus}}
 					{{#each GetFocus}}
-						<span>
+						<span class = "annotatable" data-type = {{type}} data-id = {{target}}>
+						   {{{title}}}
 						   {{{content}}}
 						</span>
+						<!-- commentButton !-->
 					{{/each}}
 				{{else}}
 					<div id = "results" class="container threeCol">
@@ -30,7 +32,25 @@
 				<button type="button" id = "searchButton">Search</button>
 			<div id = "feed">
 				<h3>You and your associates:</h3>
-				<!--Feed tempalte needed!-->
+					{{#each GetMyHighlights}}
+							<div class="annotation">
+								{{{title}}}
+								<span contenteditable="true" class="annotationSpan" data-id="{{_id}}">
+									{{{content}}}
+								</span>
+								<span class="upIt" data-id="{{_id}}">Approve</span>
+								<span class="downIt" data-id="{{_id}}">Disapprove</span>
+								<span class="updateButton" data-id="{{_id}}">save</span>
+							</div>
+					{{/each}}
+					{{#each GetHighlights}}
+						<span>
+							{{{title}}}
+							<span>
+								{{{content}}}
+							</span>
+						</span>
+					{{/each}}
 				<div id = "profile">
 					<!-- DisplayUserProfile !-->
 				</div>

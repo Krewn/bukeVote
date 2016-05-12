@@ -3,6 +3,7 @@
 	height: 55vh;
     background: lightslategray;
 	background-color: lightslategray;
+	box-shadow: -1px -1px 3px grey;
 	
 }
 #feed{
@@ -14,6 +15,8 @@
 }
 #find{
 	float: right;
+	background-color: lightgrey;
+	box-shadow: -1px 1px 3px grey;
 }
 
 #profile{
@@ -30,4 +33,12 @@
        -moz-column-count: 3;
             column-count: 3;
 }
-
+/*.annotation{
+	background-color: tomato;
+}
+span.badge[contenteditable]:empty::before {
+    content: '...;
+}
+span.badge[contenteditable]:empty:focus::before {
+    content: ':)';
+}*/

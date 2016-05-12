@@ -1,14 +1,24 @@
 <template name = "admin">
 <body>
-	<div class = "kontainer">
-		<div>
-			 <span contenteditable="true" id = "inputTitle" class = "kfield">Title</span>
-		</div>
-		<br><br>
-		<div>
-			 <span contenteditable="true" id = "inputDocument" class = "kfield">Content</span>
-		</div>
-	</div><br>
-	<button type="button" id = "addDocument">Add</button>
+	{{>myNavbar}}
+	{{#if noCreds}}
+			<h1>premission denied.</h1>
+	{{else}}
+		{{#if isAdmin }}
+			<div class = "kontainer">
+				<div>
+					 <span contenteditable="true" id = "inputTitle" class = "kfield">Title</span>
+				</div>
+				<br><br>
+				<div>
+					 <span contenteditable="true" id = "inputDocument" class = "kfield">Content</span>
+				</div>
+			</div><br>
+			<button type="button" id = "addDocument">Add</button>
+		{{else}}
+			<span></span><br><span>░░░░░░░░░░░░░░░░░░</span><br><span>░░░░░▄▄████▄▄░░░░░</span><br><span>░░░▄██████████▄░░░</span><br><span>░▄██▄██▄██▄██▄██▄░</span><br><span>░░░▀█▀░░▀▀░░▀█▀░░░</span><br><span>░░░░░░░░░░░░░░░░░░</span><br><span>░░░░░░░░░░░░░░░░░░</span><br><span></span><br><span>░░░░░░░░░░░░░░░░░</span><br><span>░░░░░▀▄░░░▄▀░░░░░</span><br><span>░░░░▄█▀███▀█▄░░░░</span><br><span>░░░█▀███████▀█░░░</span><br><span>░░░█░█▀▀▀▀▀█░█░░░</span><br><span>░░░░░░▀▀░▀▀░░░░░░</span><br><span>░░░░░░░░░░░░░░░░░</span><br><span></span><br><span>░░░░░░░░░░░░░░░░░</span><br><span>░░░▄░▀▄░░░▄▀░▄░░░</span><br><span>░░░█▄███████▄█░░░</span><br><span>░░░███▄███▄███░░░</span><br><span>░░░▀█████████▀░░░</span><br><span>░░░░▄▀░░░░░▀▄░░░░</span><br><span>░░░░░░░░░░░░░░░░░</span><br><span></span><br><span>░░░░░░░░░░░░░░░░░</span><br><span>░░░░▄▄████▄▄░░░░░</span><br><span>░░░██████████░░░░</span><br><span>░░░██▄▄██▄▄██░░░░</span><br><span>░░░░▄▀▄▀▀▄▀▄░░░░░</span><br><span>░░░▀░░░░░░░░▀░░░░</span><br><span>░░░░░░░░░░░░░░░░░</span><br><span></span><br><span>░░░░░░░░░░░░░░░░░</span><br><span>░░░░░░▄██▄░░░░░░░</span><br><span>░░░░▄██████▄░░░░░</span><br><span>░░░███▄██▄███░░░░</span><br><span>░░░░░▄▀▄▄▀▄░░░░░░</span><br><span class = "getColor">░░░░▀░▀░░▀░▀░░░░░</span><br><span>░░░░░░░░░░░░░░░░░</span><br><span></span><br><span>░░░░░░░░░░░░░░░░░</span><br><span>░░░░░░░░▄░░░░░░░░</span><br><span>░░░░░░░███░░░░░░░</span><br><span>░░▄███████████▄░░</span><br><span>░░█████████████░░</span><br><span>░░█████████████░░</span><br><span>░░░░░░░░░░░░░░░░░ </span><br><span></span><br>
+		{{/if}}
+	{{/if}}
+	
 </body>
 </template>

@@ -9,6 +9,7 @@ Meteor.users.deny({
 
 Meteor.startup(() => {
   // code to run on server at startup
+
 });
 
 /*Meteor.publish('Feed',
@@ -43,11 +44,26 @@ Meteor.methods({
 		items.insert(elm);
 		console.log("insert was called on annotations:\n");
 	},
-	'insertComment' : function (elm){
+	'insertComment' : function (elm,trg){
 		//temp = keys.insert({"type":"comment"});
 		//elm._idref = temp[0]._id;
 		elm.type = "comment";
-		items.insert(elm);
+		temp = items.insert(elm);
+		items.update({'id':trg},{'comments':{$push:temp[0].id}});
 		console.log("insert was called on comments:\n");
+	},
+	'contentUpdate': function(q,c){
+		items.update({'id':q},{'content':c});
+	},
+	'titleUpdate': function(q,c){
+		items.update({'id':q},{'title':c});
+	},
+	'assimilated': function(id){
+		let x =(spaceMonsters.find({'user':id}).count()>0);
+		return(x);
+	},
+	'random': function(id){
+		spaceMonsters.insert({'user':id});
+		console.log("insert was called on spaceMonsters:\n");
 	}
 });

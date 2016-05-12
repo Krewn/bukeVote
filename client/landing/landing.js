@@ -1,16 +1,16 @@
 
 let matchArg = [];
 let idRef = [];
+let highlights = [];
 
 Template.landing.onCreated(function _OnCreated() {
-	this.q = new ReactiveVar();
-	this.q.set([]);
-	this.f = new ReactiveVar();
-	this.f.set(false);
+	this.query = new ReactiveVar();
+	this.query.set([]);
+	this.FileHandle = new ReactiveVar();
+	this.FileHandle.set(false);
 	const handle = Meteor.subscribe("Feed");
 });
 Template.landing.events({
-
 	'click #searchButton' : function(event, template) {
 		let includeBills = template.find("#BillsSelector").checked;
 		let includeComments  = template.find("#CommentsSelector").checked;
@@ -30,26 +30,59 @@ Template.landing.events({
 		if(includeAnnotations){
 			matchArg.push("annotation");
 		}
-		template.q.set(matchArg);
-		template.f.set(false);
+		template.query.set(matchArg);
+		template.FileHandle.set(false);
 	},
 	'click .itemButton' : function(event, template){
-		//meteor.Collection.ObjectID().valueOf();
-		//alert("Clicked DOM element:"+event.currentTarget);
-		template.f.set(event.currentTarget.getAttribute('data-id'));
+		template.FileHandle.set(event.currentTarget.getAttribute('data-id'));
+		//template.h.set(items.find({'type':"annotation",'usrId':Meteor.userId(),'doc':template.FileHandle.get()}));
+	},
+	'click .updateButton' : function(event, template){
+		template.FileHandle.set(event.currentTarget.getAttribute('data-id'));
+	},
+	'click .annotatable' : function(event , template){
+		    let t = document.getSelection();
+			if(t!="" && event.currentTarget.getAttribute('data-type')=="document"){
+				let temp = template.FileHandle.get();
+				let elm ={
+					'target': temp,
+					'title':String(t),
+					'content':"",
+					'comments':[],
+					'creator': Meteor.userId(),
+					'scrore':0,
+					'tstamp': new Date()
+				};
+				alert(t);
+				Meteor.call('insertAnnotation',elm);
+			}
+			if(String(event.currentTarget.getAttribute('data-type'))=="annotation"){
+				template.FileHandle.set(event.currentTarget.getAttribute('data-id'));
+			}
+			
+	},
+	'click .annotationSpan' : function(event, template){
+		let qid = event.currentTarget.getAttribute('data-id');
+		Meteor.Call("contentUpdate",qid,event.currentTarget.innerHTML);
 	}
 });
 Template.landing.helpers({
 	"foundItem": function(Tempalte){
-		return(items.find({'type':{$in:Template.instance().q.get()}}));
+		return(items.find({'type':{$in:Template.instance().query.get()}}));
 	},
 	"UserFocus": function(Tempalte){
-		return(Template.instance().f.get()!=false);
+		return(Template.instance().FileHandle.get()!=false);
 	},
 	"GetFocus": function(){
-		//alert("reactive f Valiue:"+Template.instance().f.get());
-		return(items.find({'_id':Template.instance().f.get()}));
+		//alert("reactive f Valiue:"+Template.instance().FileHandle.get());
+		return(items.find({'_id':Template.instance().FileHandle.get()}));
 		//return(items.find({'_id':{$exists:1}}));
+	},
+	"GetMyHighlights":function(){
+		return(items.find({'type':"annotation",'creator':Meteor.userId(),'_id':template.instance().FileHandle.get()}));
+	},	
+	"GetHighlights":function(){
+		return(items.find({'type':"annotation",'creator':Meteor.userId(),'_id':template.instance().FileHandle.get()}));
 	}
 });
 
