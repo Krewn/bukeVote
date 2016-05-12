@@ -1,6 +1,6 @@
 
 //vote
-Template.results.onCreated(function _OnCreated() {
+Template.vote.onCreated(function _OnCreated() {
 
 });
 Template.vote.events({

@@ -1,6 +1,6 @@
 
 //admin
-Template.results.onCreated(function _OnCreated() {
+Template.admin.onCreated(function _OnCreated() {
 	this.auth = new ReactiveVar(); 
 });
 Template.admin.events({
