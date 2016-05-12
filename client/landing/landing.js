@@ -35,8 +35,8 @@ Template.landing.events({
 	},
 	'click .itemButton' : function(event, template){
 		//meteor.Collection.ObjectID().valueOf();
-		alert(event.target.value);
-		template.f.set(event.target.value);
+		//alert("Clicked DOM element:"+event.currentTarget);
+		template.f.set(event.currentTarget.getAttribute('data-id'));
 	}
 });
 Template.landing.helpers({
@@ -47,9 +47,9 @@ Template.landing.helpers({
 		return(Template.instance().f.get()!=false);
 	},
 	"GetFocus": function(){
-		alert(Template.instance().f.get());
-		//return(items.find({'_id':Template.instacnce().f.get()}));
-		return(items.find());
+		//alert("reactive f Valiue:"+Template.instance().f.get());
+		return(items.find({'_id':Template.instance().f.get()}));
+		//return(items.find({'_id':{$exists:1}}));
 	}
 });
 
