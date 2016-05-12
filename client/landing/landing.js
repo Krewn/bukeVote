@@ -47,7 +47,7 @@ Template.landing.events({
 				let elm ={
 					'target': temp,
 					'title':String(t),
-					'content':"",
+					'content':"...",
 					'comments':[],
 					'creator': Meteor.userId(),
 					'scrore':0,
@@ -79,10 +79,10 @@ Template.landing.helpers({
 		//return(items.find({'_id':{$exists:1}}));
 	},
 	"GetMyHighlights":function(){
-		return(items.find({'type':"annotation",'creator':Meteor.userId(),'_id':template.instance().FileHandle.get()}));
+		return(items.find({'type':"annotation",'creator':Meteor.userId(),'target':Template.instance().FileHandle.get()}));
 	},	
 	"GetHighlights":function(){
-		return(items.find({'type':"annotation",'creator':Meteor.userId(),'_id':template.instance().FileHandle.get()}));
+		return(items.find({'type':"annotation",'creator':{$ne: Meteor.userId()},'target':Template.instance().FileHandle.get()}));
 	}
 });
 

@@ -8,7 +8,6 @@
 	background-color:lightgrey;
 	transition: color  .3s ease;
 	transition: background-color  .2s ease;
-	transition: color  .2s ease;
 }
 .document{
 	box-shadow: -1px -1px 3px grey;

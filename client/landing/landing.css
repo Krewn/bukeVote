@@ -33,6 +33,14 @@
        -moz-column-count: 3;
             column-count: 3;
 }
+.materialSpan:hover{
+	background-color: grey;
+}
+.materialSpan{
+	box-shadow: 1px 1px 3px grey;
+	background-color: tomato;
+	transition: background-color  .2s ease;
+}
 /*.annotation{
 	background-color: tomato;
 }
