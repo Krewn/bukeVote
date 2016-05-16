@@ -4,7 +4,7 @@ Template.comment.onCreated(function _OnCreated() {
 	this.dispcom = new ReactiveVar();
 });
 Template.comment.events({
-	'click .updateButton' : function(event, template){
+	'click .commentUpdateButton' : function(event, template){
 		alert(document.querySelector(".commentSpan[data-id="+event.currentTarget.getAttribute('data-id')+"]").innerHTML);
 		Meteor.call('contentUpdate',{
 			'_id':event.currentTarget.getAttribute('data-id')
