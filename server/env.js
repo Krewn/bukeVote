@@ -65,5 +65,21 @@ Meteor.methods({
 	'random': function(id){
 		spaceMonsters.insert({'user':id});
 		console.log("insert was called on spaceMonsters:\n");
+	},
+	'up':function(id,usr){
+		
+	},
+	'down':function(id,usr){
+		
+	},
+	'delete':function(id){
+		
 	}
 });
+
+
+
+
+
+
+
