@@ -1,3 +1,19 @@
 <template name = "comment" >
-	
+	<div class="materialSpan comment">
+		{{#if isUsersComment}}
+		<br><span contenteditable="true" class="contentSpan" data-id="{{_id}}">
+			<mark style="background-color: tan">{{content}}</mark>
+		</span><br>
+		<span class="materialSpan updateButton" data-id="{{_id}}">save</span>
+		<span class="materialSpan delete" data-id="{{_id}}">delete</span>
+		{{else}}
+		<br><span contenteditable="true" class="annotationSpan" data-id="{{_id}}">
+		{{content}}
+		</span><br>
+		<span class="materialSpan upIt" data-id="{{_id}}">Approve</span>
+		<span class="materialSpan downIt" data-id="{{_id}}">Disapprove</span>
+		{{/if}}
+		<span class="materialSpan ShowComments" data-id="{{_id}}">ShowComments</span>
+		<span class="materialSpan addComment" data-id="{{_id}}">Comment</span>
+	</div>
 </template>

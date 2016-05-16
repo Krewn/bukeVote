@@ -1,0 +1,31 @@
+<template name = "highlight" >
+	{{#if mine}}
+		<div class="annotation">
+			<span style="background-color:yellow">
+				{{{title}}}
+			</span><br>
+			<span contenteditable="true" class="annotationSpan" data-id="{{_id}}">
+				{{content}}
+			</span><br>
+			<span class="delete materialSpan" data-id="{{_id}}">delete</span>
+			<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
+			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
+			<span class="updateButton materialSpan" data-id="{{_id}}">save</span>
+			<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
+			<span class="Comment materialSpan" data-id="{{_id}}">Comment</span>
+		</div>
+	{{else}}
+		<div class="annotation">
+			<span class = "{{type}}">
+				{{{title}}}
+			</span><br>
+			<span>
+				{{content}}
+			</span><br>
+			<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
+			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
+			<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
+			<span class="Comment materialSpan" data-id="{{_id}}">Comment</span>
+		</div>
+	{{/if}}
+</template>

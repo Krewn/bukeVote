@@ -52,8 +52,8 @@ Meteor.methods({
 		items.update({'id':trg},{'comments':{$push:temp[0].id}});
 		console.log("insert was called on comments:\n");
 	},
-	'contentUpdate': function(q,c){
-		items.update({'id':q},{'content':c});
+	'contentUpdate': function(upArgSelector,upArgEffect){
+		items.update(upArgSelector,upArgEffect);
 	},
 	'titleUpdate': function(q,c){
 		items.update({'id':q},{'title':c});
