@@ -5,11 +5,11 @@ Template.comment.onCreated(function _OnCreated() {
 });
 Template.comment.events({
 	'click .commentUpdateButton' : function(event, template){
-		alert(document.querySelector(".commentSpan[data-id="+event.currentTarget.getAttribute('data-id')+"]").innerHTML);
+		alert(document.querySelector(".commentSpan[data-id='"+event.currentTarget.getAttribute('data-id')+"']").innerHTML);
 		Meteor.call('contentUpdate',{
 			'_id':event.currentTarget.getAttribute('data-id')
 			},{
-			$set:{'title':document.querySelector(".commentSpan[data-id="+event.currentTarget.getAttribute('data-id')+"]").innerHTML}
+			$set:{'title':document.querySelector(".commentSpan[data-id='"+event.currentTarget.getAttribute('data-id')+"']").innerHTML}
 		});
 	},
 	'click .ShowComments': function(event,template){

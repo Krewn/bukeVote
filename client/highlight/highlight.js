@@ -6,16 +6,18 @@ Template.highlight.onCreated(function _OnCreated() {
 });
 Template.highlight.events({
 	'click .updateButton' : function(event, template){
+		alert("..")
+		alert(document.querySelector(".annotationSpan[data-id='"+event.currentTarget.getAttribute('data-id')+"']").innerHTML);
 		Meteor.call('contentUpdate',{
 			'_id':event.currentTarget.getAttribute('data-id')
 			},{
-			$set:{'content':document.querySelector(".annotationSpan[data-id="+event.currentTarget.getAttribute('data-id')+"]").innerHTML}
+			$set:{'content':document.querySelector(".annotationSpan[data-id='"+event.currentTarget.getAttribute('data-id')+"']").innerHTML}
 		});
 	},
 	'click .ShowComments': function(event,template){
 		template.dispcom.set(template.dispcom.get()?false:true);
 	},
-	'click .newComment': function(event,template){
+	'click span.newComment': function(event,template){
 		let commElm = {
 			'target': event.currentTarget.getAttribute('data-id'),
 			'creator': Meteor.userId(),
