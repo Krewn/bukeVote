@@ -66,8 +66,7 @@ Template.landing.events({
 			};
 			alert(t);
 			Meteor.call('insertAnnotation',elm);
-		}
-		if(String(event.currentTarget.getAttribute('data-type'))=="annotation"){
+		}else{//String(event.currentTarget.getAttribute('data-type'))=="annotation"||"vote"||"comment"
 			template.FileHandle.set(event.currentTarget.getAttribute('data-id'));
 		}	
 	},
@@ -89,24 +88,6 @@ Template.landing.helpers({
 		//alert("reactive f Valiue:"+Template.instance().FileHandle.get());
 		return(items.find({'_id':Template.instance().FileHandle.get()}));
 		//return(items.find({'_id':{$exists:1}}));
-	},
-	"GetMyHighlights":function(){
-		return(items.find({'type':"annotation",'creator':Meteor.userId(),'target':Template.instance().FileHandle.get()}));
-	},	
-	"GetHighlights":function(){
-		return(items.find({'type':"annotation",'creator':{$ne: Meteor.userId()},'target':Template.instance().FileHandle.get(),'delete':{$exists:false}}));
-	},
-	"GetMyComments":function(){
-		return(items.find({'type':"comment",'creator':Meteor.userId(),'target':Template.instance().FileHandle.get()}));
-	},	
-	"GetComments":function(){
-		return(items.find({'type':"comment",'creator':{$ne: Meteor.userId()},'target':Template.instance().FileHandle.get(),'delete':{$exists:false}}));
-	},
-	"GetMyVotes":function(){
-		return(items.find({'type':"vote",'creator':Meteor.userId(),'target':Template.instance().FileHandle.get(),'delete':{$exists:false}}));
-	},	
-	"GetVotes":function(){
-		return(items.find({'type':"vote",'creator':{$ne: Meteor.userId()},'target':Template.instance().FileHandle.get(),'delete':{$exists:false}}));
 	}
 });
 

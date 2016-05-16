@@ -1,0 +1,56 @@
+<template name = "itemView" >
+	<span class = "annotatable" data-type = {{type}} data-id = {{target}}>
+		{{#if contentDocument}}
+			{{{title}}}
+			{{{content}}}
+		{{/if}}
+		{{#if contentAnnotation}}
+			{{title}}
+			{{content}}
+		{{/if}}
+		{{#if contentVote}}
+			{{title}} <!-- TODO !-->
+			{{content}}
+		{{/if}}
+		{{#if contentComment}}
+			{{title}}
+		{{/if}}
+	</span><br>
+	{{#if isUsersContent}}
+		<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
+		<span class="newComment materialSpan" data-id="{{_id}}">Comment</span>
+		<span class="delete materialSpan" data-id="{{_id}}">delete</span>
+		<span class="updateButton materialSpan" data-id="{{_id}}">save</span>
+	{{else}}
+		<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
+		<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
+		<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
+		<span class="newComment materialSpan" data-id="{{_id}}">Comment</span>
+	{{/if}}
+	{{#if showComments}}
+		<div id = "feed">
+			<h3>Peanuts:</h3>
+				{{#each GetMyHighlights}}
+					{{>highlight}}
+				{{/each}}
+				{{#each GetHighlights}}
+					{{>highlight}}
+				{{/each}}
+				{{#each GetMyComments}}
+					{{>comment}}
+				{{/each}}
+				{{#each GetComments}}
+					{{>comment}}
+				{{/each}}
+				{{#each GetMyVotes}}
+					{{>vote}}
+				{{/each}}
+				{{#each GetVotes}}
+					{{>vote}}
+				{{/each}}
+			<div id = "profile">
+				<!-- DisplayUserProfile !-->
+			</div>
+		</div>
+	{{/if}}
+</template>
