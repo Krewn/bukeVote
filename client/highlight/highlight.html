@@ -1,6 +1,6 @@
 <template name = "highlight" >
-	{{#if mine}}
-		<div class="annotation">
+	<div class="annotation">
+		{{#if mine}}
 			<span style="background-color:yellow">
 				{{{title}}}
 			</span><br>
@@ -12,10 +12,8 @@
 			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
 			<span class="updateButton materialSpan" data-id="{{_id}}">save</span>
 			<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
-			<span class="newComment materialSpan" data-id="{{_id}}">Comment</span>
-		</div>
-	{{else}}
-		<div class="annotation">
+			<span class="newCommenta materialSpan" data-id="{{_id}}">Comment</span>
+		{{else}}
 			<span class = "{{type}}">
 				{{{title}}}
 			</span><br>
@@ -25,10 +23,12 @@
 			<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
 			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
 			<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
-			<span class="newComment materialSpan" data-id="{{_id}}">Comment</span>
-		</div>
-	{{/if}}
-	{{#each getComments}}
-		{{>comment}}
-	{{/each}}
+			<span class="newCommenta materialSpan" data-id="{{_id}}">Comment</span>
+		{{/if}}
+		{{#if showComments}}
+			{{#each getComments}}
+				{{>comment}}
+			{{/each}}
+		{{/if}}
+	</div>
 </template>

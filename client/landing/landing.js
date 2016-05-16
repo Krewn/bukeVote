@@ -70,7 +70,13 @@ Template.landing.events({
 		if(String(event.currentTarget.getAttribute('data-type'))=="annotation"){
 			template.FileHandle.set(event.currentTarget.getAttribute('data-id'));
 		}	
-	}
+	},
+	/*"mouseenter .materialSpan":function(event, tempalte){
+		event.target.setAttribute('data-focused',true);
+	},
+	"mouseleave .materialSpan":function(event, tempalte){
+		event.target.setAttribute('data-focused',false);
+	}*/
 });
 Template.landing.helpers({
 	"foundItem": function(Tempalte){
