@@ -1,9 +1,8 @@
 
 //highlight
-
 Template.highlight.onCreated(function _OnCreated() {
-	this.dispcom = new ReactiveVar();
-	this.dispcom.set(false);
+	this.dispcom = new ReactiveDict();
+	this.dispcom.set(this._id,false);
 });
 Template.highlight.events({
 	'click .updateButton' : function(event, template){
@@ -14,12 +13,20 @@ Template.highlight.events({
 				},{
 				$set:{'content':document.querySelector(".annotationSpan[data-id='"+event.target.getAttribute('data-id')+"']").innerHTML}
 			});
+			event.stopImmediatePropagation();
 		//}
 	},
 	'click .ShowComments': function(event,template){
-		//if(event.target.getAttribute('data-focused')=="true"){
-			template.dispcom.set(template.dispcom.get()?false:true);
-		//}
+		//alert("hlt");
+		//let temp = template.dispcom.get()?false:true;
+		template.dispcom.set(this._id,true);
+		event.stopImmediatePropagation();
+	},
+	'click .HideComments': function(event,template){
+		//alert("hlt");
+		//let temp = template.dispcom.get()?false:true;
+		template.dispcom.set(this._id,false);
+		event.stopImmediatePropagation();
 	},
 	'click .newCommenta': function(event,template){
 		//if(event.target.getAttribute('data-focused')=="true"){
@@ -32,7 +39,8 @@ Template.highlight.events({
 				'comments':[]
 			};
 			Meteor.call('insertComment',commElm,event.target.getAttribute('data-id'));
-			template.dispcom.set(true);
+			template.dispcom.set(this._id,true);
+			event.stopImmediatePropagation();
 		//}
 	},
 	'click .downIt': function(event,template){
@@ -50,10 +58,10 @@ Template.highlight.helpers({
 		return(Meteor.userId() == this.creator ? true : false);
 	},
 	'showComments':function(){
-		return(Template.instance().dispcom.get());
+		return(Template.instance().dispcom.get(this._id));
 	},
 	'getComments':function(){
-		if(Template.instance().dispcom.get()){
+		if(Template.instance().dispcom.get(this._id)){
 			return(items.find({'type':"comment",'target':this._id,'delete':{$exists:false}}));
 		}else{
 			return(items.find({'type':"dope",'target':this._id,'delete':{$exists:false}}));

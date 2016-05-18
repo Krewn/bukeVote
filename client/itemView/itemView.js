@@ -1,8 +1,8 @@
 
 //itemView
 Template.itemView.onCreated(function _OnCreated() {
-	this.dispcom = new ReactiveVar();
-	this.dispcom.set(false);
+	this.dispcom = new ReactiveDict();
+	this.dispcom.set(this._id,false);
 });
 Template.itemView.events({
 	'click .updateButton' : function(event, template){
@@ -13,12 +13,20 @@ Template.itemView.events({
 				},{
 				$set:{'content':document.querySelector(".annotationSpan[data-id='"+event.target.getAttribute('data-id')+"']").innerHTML}
 			});
+			event.stopImmediatePropagation();
 		//}
 	},
 	'click .ShowComments': function(event,template){
-		//if(event.target.getAttribute('data-focused')=="true"){
-			template.dispcom.set(template.dispcom.get()?false:true);
-		//}
+		//alert("happens");
+		//let temp = template.dispcom.get()?false:true;
+		template.dispcom.set(this._id,true);
+		event.stopImmediatePropagation();
+	},
+	'click .HideComments': function(event,template){
+		//alert("happens");
+		//let temp = template.dispcom.get()?false:true;
+		template.dispcom.set(this._id,false);
+		event.stopImmediatePropagation();
 	},
 	'click .newComment': function(event,template){
 		//if(event.target.getAttribute('data-focused')=="true"){
@@ -31,7 +39,8 @@ Template.itemView.events({
 				'comments':[]
 			};
 			Meteor.call('insertComment',commElm,event.target.getAttribute('data-id'));
-			template.dispcom.set(true);
+			template.dispcom.set(this._id,true);
+			event.stopImmediatePropagation();
 		//}
 	},
 });
@@ -56,7 +65,7 @@ Template.itemView.helpers({
 		return(this.type=="comment");
 	},	
 	'showComments':function(){
-		return(Template.instance().dispcom.get());
+		return(Template.instance().dispcom.get(this._id));
 	},
 	"GetMyHighlights":function(){
 		return(items.find({'type':"annotation",'creator':Meteor.userId(),'target':this._id}));

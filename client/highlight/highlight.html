@@ -12,6 +12,7 @@
 			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
 			<span class="updateButton materialSpan" data-id="{{_id}}">save</span>
 			<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
+			<span class="HideComments materialSpan" data-id="{{_id}}">HideComments</span>
 			<span class="newCommenta materialSpan" data-id="{{_id}}">Comment</span>
 		{{else}}
 			<span class = "{{type}}">
@@ -23,12 +24,13 @@
 			<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
 			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
 			<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
+			<span class="HideComments materialSpan" data-id="{{_id}}">HideComments</span>
 			<span class="newCommenta materialSpan" data-id="{{_id}}">Comment</span>
 		{{/if}}
-		{{#if showComments}}
-			{{#each getComments}}
-				{{>comment}}
-			{{/each}}
-		{{/if}}
 	</div>
+	{{#if showComments}}
+		{{#each getComments}}
+			{{>comment}}
+		{{/each}}
+	{{/if}}
 </template>

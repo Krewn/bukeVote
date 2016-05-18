@@ -1,5 +1,6 @@
 <template name = "comment" >
 	<div class="comment">
+		<span>{{creator}}:{{_id}}</span><br>
 		{{#if isUsersComment}}
 		<br>
 		<mark class = "myComment">
@@ -15,6 +16,7 @@
 		<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
 		{{/if}}
 		<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
+		<span class="HideComments materialSpan" data-id="{{_id}}">HideComments</span>
 		<span class="newCommentc materialSpan" data-id="{{_id}}">Comment</span>
 		{{#if showComments}}
 			{{#each getComments}}
