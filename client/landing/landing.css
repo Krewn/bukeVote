@@ -1,9 +1,9 @@
 #results{
     width: auto;
-	height: 55vh;
+	/*height: 55vh;*/
     background: lightslategray;
 	background-color: lightslategray;
-	box-shadow: -1px -1px 3px grey;
+	/*box-shadow: -1px -1px 3px grey;*/
 }
 #feed{
 	width: auto;
@@ -20,6 +20,12 @@
 #profile{
 	
 }
+.comment{
+		margin: 0.2cm 0.2cm 0.2cm 0.4cm;
+}
+.annotation{
+		margin: 0.1cm 0.1cm 0.1cm 0.2cm;
+}
 .container {
    height: auto;
 }
@@ -32,11 +38,11 @@
             column-count: 3;
 }
 .materialSpan:hover{
-	background-color: grey;
+	background-color: tomato;
 }
 .materialSpan{
 	box-shadow: 1px 1px 3px grey;
-	background-color: tomato;
+	background-color: tan;
 	transition: background-color  .2s ease;
 }
 /*.annotation{

@@ -1,5 +1,9 @@
 
 //comment
+/*Tracker.autorun(function(){
+	alert("lmao");
+	window.scrollTo(0,document.body.scrollHeight);
+});*/
 
 Template.comment.onCreated(function _OnCreated() {
 	this.dispcom = new ReactiveDict();
@@ -7,43 +11,33 @@ Template.comment.onCreated(function _OnCreated() {
 });
 Template.comment.events({
 	'click .commentUpdateButton' : function(event, template){
-		//if(event.target.getAttribute('data-focused')=="true"){
-			//alert(document.querySelector(".commentSpan[data-id='"+event.target.getAttribute('data-id')+"']").innerHTML);
-			Meteor.call('contentUpdate',{
-				'_id':event.target.getAttribute('data-id')
-				},{
-				$set:{'title':document.querySelector(".commentSpan[data-id='"+event.target.getAttribute('data-id')+"']").innerHTML}
-			});
-			event.stopImmediatePropagation();
-		//}
+		Meteor.call('contentUpdate',{
+			'_id':this._id
+			},{
+			$set:{'title':document.querySelector(".commentSpan[data-id='"+this._id+"']").innerHTML}
+		});
+		event.stopImmediatePropagation();
 	},
 	'click .ShowComments': function(event,template){
-		//alert("happens");
-		//let temp = template.dispcom.get()?false:true;
 		template.dispcom.set(this._id,true);
 		event.stopImmediatePropagation();
 	},
 	'click .HideComments': function(event,template){
-		alert("cmt");
-		//let temp = template.dispcom.get()?false:true;
 		template.dispcom.set(this._id,false);
 		event.stopImmediatePropagation();
 	},
 	'click .newCommentc': function(event,template){
-		alert(this._id);
-		//if(event.target.getAttribute('data-focused')=="true"){
-			let commElm = {
-				'target': event.target.getAttribute('data-id'),
-				'creator': Meteor.userId(),
-				'title': "...",
-				'ups': [],
-				'downs':[],
-				'comments':[]
-			};
-			Meteor.call('insertComment',commElm,event.target.getAttribute('data-id'));
-			template.dispcom.set(this._id,true);
-			event.stopImmediatePropagation();
-		//}
+		let commElm = {
+			'target': this._id,
+			'creator': Meteor.userId(),
+			'title': "...",
+			'ups': [],
+			'downs':[],
+			'comments':[]
+		};
+		Meteor.call('insertComment',commElm,this._id);
+		template.dispcom.set(this._id,true);
+		event.stopImmediatePropagation();
 	}
 });
 Template.comment.helpers({

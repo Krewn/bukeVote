@@ -1,7 +1,8 @@
 
-let matchArg = [];
-let idRef = [];
-let highlights = [];
+/*Tracker.autorun(function(){
+	window.scrollTo(0,document.body.scrollHeight);
+});*/
+
 /*let DBThrough = function(){
 	let fills = document.getElementsByClassName("DBdirect");
 	alert("...");
@@ -22,6 +23,9 @@ Template.landing.onCreated(function _OnCreated() {
 	this.FileHandle.set(false);
 	const handle = Meteor.subscribe("Feed");
 });
+Template.landing.onRendered(function _OnCreated() {
+	 document.getElementById("searchButton").click();
+});
 
 Template.landing.events({
 	'click #searchButton' : function(event, template) {
@@ -30,7 +34,7 @@ Template.landing.events({
 		let includeVotes  = template.find("#VotesSelector").checked;
 		let includeAnnotations  = template.find("#AnnotationsSelector").checked;
 		let searchText = template.find("#searchText").value;
-		matchArg = [];
+		let matchArg = [];
 		if(includeBills){
 			 matchArg.push("document");
 		}
@@ -64,11 +68,13 @@ Template.landing.events({
 				'scrore':0,
 				'tstamp': new Date()
 			};
-			alert(t);
 			Meteor.call('insertAnnotation',elm);
 		}else{//String(event.currentTarget.getAttribute('data-type'))=="annotation"||"vote"||"comment"
-			template.FileHandle.set(event.currentTarget.getAttribute('data-id'));
+			if(this.type != "document"){
+				template.FileHandle.set(event.currentTarget.getAttribute('data-id'));
+			}
 		}	
+		event.stopImmediatePropagation();
 	},
 	/*"mouseenter .materialSpan":function(event, tempalte){
 		event.target.setAttribute('data-focused',true);

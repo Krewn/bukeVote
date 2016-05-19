@@ -1,23 +1,22 @@
 <template name = "comment" >
 	<div class="comment">
-		<span>{{creator}}:{{_id}}</span><br>
+		<h4>User:: {{creator}} Says:</h4>
 		{{#if isUsersComment}}
-		<br>
-		<mark class = "myComment">
-			<span contenteditable="true" class="commentSpan" data-id="{{_id}}">
-				{{title}}
-			</span><br>
-		</mark>
-		<span class="commentUpdateButton materialSpan" data-id="{{_id}}">save</span>
-		<span class="delete materialSpan" data-id="{{_id}}">delete</span>
+			<mark class = "myComment">
+				<span contenteditable="true" class="commentSpan" data-id="{{_id}}">
+					{{{title}}}
+				</span><br>
+			</mark>
+			<span class="commentUpdateButton materialSpan" data-id="{{_id}}">save</span>
+			<span class="delete materialSpan" data-id="{{_id}}">delete</span>
 		{{else}}
-		<br><span class="commentSpan" data-id="{{_id}}">{{title}}</span><br>
-		<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
-		<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
+			<br><span class="commentSpan" data-id="{{_id}}">{{title}}</span><br>
+			<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
+			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
 		{{/if}}
-		<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
-		<span class="HideComments materialSpan" data-id="{{_id}}">HideComments</span>
-		<span class="newCommentc materialSpan" data-id="{{_id}}">Comment</span>
+			<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
+			<span class="HideComments materialSpan" data-id="{{_id}}">HideComments</span>
+			<span class="newCommentc materialSpan" data-id="{{_id}}">Comment</span>
 		{{#if showComments}}
 			{{#each getComments}}
 				{{>comment}}

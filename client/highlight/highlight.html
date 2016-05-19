@@ -1,11 +1,12 @@
 <template name = "highlight" >
 	<div class="annotation">
+		<h4>User :: {{creator}} Notes:</h4>
 		{{#if mine}}
 			<span style="background-color:yellow">
 				{{{title}}}
 			</span><br>
 			<span contenteditable="true" class="annotationSpan" data-id="{{_id}}">
-				{{content}}
+				{{{content}}}
 			</span><br>
 			<span class="delete materialSpan" data-id="{{_id}}">delete</span>
 			<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
@@ -27,10 +28,10 @@
 			<span class="HideComments materialSpan" data-id="{{_id}}">HideComments</span>
 			<span class="newCommenta materialSpan" data-id="{{_id}}">Comment</span>
 		{{/if}}
+		{{#if showComments}}
+			{{#each getComments}}
+				{{>comment}}
+			{{/each}}
+		{{/if}}
 	</div>
-	{{#if showComments}}
-		{{#each getComments}}
-			{{>comment}}
-		{{/each}}
-	{{/if}}
 </template>

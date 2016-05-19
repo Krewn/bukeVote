@@ -27,7 +27,8 @@ Meteor.methods({
 		//temp = keys.insert({"type":"document"});
 		//elm._idref = temp[0]._id;
 		elm.type = "document";
-		items.insert(elm);
+		temp = items.insert(elm);
+		items.update({_id:temp[0]},{"target":temp[0]});
 		console.log("insert was called on documents:\n");
 	},
 	'insertVote' : function (elm){
@@ -74,7 +75,17 @@ Meteor.methods({
 	},
 	'delete':function(id){
 		
-	}
+	}/*,
+	'getFrom':function(place){
+		request.open('GET', "https://congress.gov/bill/114th-congress/house-bill/2029", true);  // `false` makes the request synchronous
+		request.send(null);
+		let cont = "";
+		if (request.status === 200) {
+		  alert(request.responseText);
+		  cont = body;
+		}
+		return(cont)
+	}*/
 });
 
 

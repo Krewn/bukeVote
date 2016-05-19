@@ -55,7 +55,7 @@ Template.itemView.helpers({
 		return(this.type=="document");
 	},
 	'contentAnnotation': function(){
-		alert(this.type);
+		//alert(this.type);
 		return(this.type=="annotation");
 	},
 	'contentVote': function(){
