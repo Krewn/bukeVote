@@ -21,6 +21,7 @@ Template.landing.onCreated(function _OnCreated() {
 	this.query.set([]);
 	this.FileHandle = new ReactiveVar();
 	this.FileHandle.set(false);
+	this.expression = new ReactiveVar();
 	const handle = Meteor.subscribe("Feed");
 });
 Template.landing.onRendered(function _OnCreated() {
@@ -33,8 +34,13 @@ Template.landing.events({
 		let includeComments  = template.find("#CommentsSelector").checked;
 		let includeVotes  = template.find("#VotesSelector").checked;
 		let includeAnnotations  = template.find("#AnnotationsSelector").checked;
-		let searchText = template.find("#searchText").value;
-		let matchArg = [];
+		let searchText = string = (template.find("#searchText").textContent===undefined) ? template.find("#searchText").innerText : template.find("#searchText").textContent;
+		if(searchText === null || searchText == "KeyWords"){
+			searchExpression = new RegExp(/.*/);
+		}else{
+			searchExpression = new RegExp(searchText.replace(" ","|"));
+		}
+		let matchArg= [];
 		if(includeBills){
 			 matchArg.push("document");
 		}
@@ -48,6 +54,7 @@ Template.landing.events({
 			matchArg.push("annotation");
 		}
 		template.query.set(matchArg);
+		template.expression.set(searchExpression);
 		template.FileHandle.set(false);
 	},
 	'click .itemButton' : function(event, template){
@@ -85,7 +92,15 @@ Template.landing.events({
 });
 Template.landing.helpers({
 	"foundItem": function(Tempalte){
-		return(items.find({'type':{$in:Template.instance().query.get()}}));
+		return(items.find({
+			$and:[ 
+				{'type':{$in:Template.instance().query.get()}},
+				{$or:[
+					{content: { $regex: Template.instance().expression.get(), $options: 'i' } },
+					{title:   { $regex: Template.instance().expression.get(), $options: 'i' }}
+				]}
+			]
+		}));
 	},
 	"UserFocus": function(Tempalte){
 		return(Template.instance().FileHandle.get()!=false);
