@@ -68,13 +68,18 @@ Meteor.methods({
 		console.log("insert was called on spaceMonsters:\n");
 	},
 	'up':function(id,usr){
-		
+		items.update({_id:id},{$addToSet:{ups:usr}});
 	},
 	'down':function(id,usr){
-		
+		items.update({_id:id},{$addToSet:{downs:usr}});
 	},
 	'delete':function(id){
-		
+		//alert(items.findOne({_id:id}).deleted);
+		//if(items.findOne({_id:id}).deleted===null){
+			items.update({_id:id},{deleted:true});
+		/*}else{
+			items.update({_id:id},{$unset:{deleted:1}});
+		}*/
 	}/*,
 	'getFrom':function(place){
 		request.open('GET', "https://congress.gov/bill/114th-congress/house-bill/2029", true);  // `false` makes the request synchronous

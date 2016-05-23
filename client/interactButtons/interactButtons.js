@@ -43,13 +43,13 @@ Template.interactButtons.events({
 		Session.set("show:"+this._id,true);
 	},
 	'click .downIt': function(event,template){
-		
+		Meteor.call('down',this._id,Meteor.userId());
 	},
 	'click .upIt': function(event,template){
-		
+		Meteor.call('up',this._id,Meteor.userId());
 	},
 	'click .delete': function(event,template){
-		
+		Meteor.call('delete',this._id);
 	}
 });
 Template.interactButtons.helpers({
