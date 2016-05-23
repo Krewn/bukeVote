@@ -8,7 +8,11 @@
 				</span><br>
 			</mark>
 		{{else}}
-			<br><span class="commentSpan" data-id="{{_id}}">{{title}}</span><br>
+			{{#if rendered}}
+				<br><span class="commentSpan" data-id="{{_id}}">{{{title}}}</span><br>
+			{{else}}
+				<br><span class="commentSpan" data-id="{{_id}}">{{title}}</span><br>
+			{{/if}}
 		{{/if}}
 		{{>interactButtons}}
 		{{#if showComments}}

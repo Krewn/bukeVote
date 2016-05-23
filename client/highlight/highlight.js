@@ -26,6 +26,9 @@ Template.highlight.helpers({
 	'showComments':function(){
 		return(Session.get("show:"+this._id));
 	},
+	'rendered':function(){
+		return(Session.get("render:"+this._id));
+	},
 	'getComments':function(){
 		return(items.find({'type':"comment",'target':this._id,'delete':{$exists:false}}));
 	}

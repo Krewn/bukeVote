@@ -4,7 +4,8 @@
 
 Template.interactButtons.onCreated(function _OnCreated() {
 	this.dispcom = new ReactiveDict();
-	this.dispcom.set(this._id,false);
+	this.dispcom.set("show:"+this._id,false);
+	this.dispcom.set("render:"+this._id,false);
 });
 Template.interactButtons.events({
 	'click .updateButton' : function(event, template){
@@ -21,12 +22,22 @@ Template.interactButtons.events({
 		}
 	},
 	'click .ShowComments': function(event,template){
-		if(template.dispcom.get(this._id)){
-			template.dispcom.set(this._id,false);
+		if(template.dispcom.get("show:"+this._id)){
+			template.dispcom.set("show:"+this._id,false);
 			Session.set("show:"+this._id,false);
 		}else{
-			template.dispcom.set(this._id,true);
+			template.dispcom.set("show:"+this._id,true);
 			Session.set("show:"+this._id,true);
+		}
+			event.stopImmediatePropagation();
+	},
+	'click .render': function(event,template){
+		if(template.dispcom.get("render:"+this._id)){
+			template.dispcom.set("render:"+this._id,false);
+			Session.set("render:"+this._id,false);
+		}else{
+			template.dispcom.set("render:"+this._id,true);
+			Session.set("render:"+this._id,true);
 		}
 			event.stopImmediatePropagation();
 	},

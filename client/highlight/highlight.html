@@ -9,12 +9,16 @@
 				{{{content}}}
 			</span><br>
 		{{else}}
-			<span class = "{{type}}">
-				{{{title}}}
-			</span><br>
-			<span>
-				{{content}}
-			</span><br>
+				<span class = "{{type}}">
+					{{{title}}}
+				</span><br>
+				<span>
+					{{#if rendered}}
+						{{{content}}}
+					{{else}}
+						{{content}}
+					{{/if}}
+				</span><br>
 		{{/if}}
 		{{>interactButtons}}
 		{{#if showComments}}
