@@ -1,19 +1,24 @@
 
 //highlight
+/*
+When a user selects a section of an .annotatable a highlight is created.
+Highlights are like comments except they retain the imutable selection 
+from which they spawned.
+*/
 Template.highlight.onCreated(function _OnCreated() {
-	this.dispcom = new ReactiveDict();
-	this.dispcom.set(this._id,false);
+	
 });
 Template.highlight.events({
-	'click .updateButton' : function(event, template){
+	/*'click .updateButton' : function(event, template){
 	Meteor.call('contentUpdate',{
 			'_id':event.target.getAttribute('data-id')
 			},{
 			$set:{'content':document.querySelector(".annotationSpan[data-id='"+event.target.getAttribute('data-id')+"']").innerHTML}
 		});
 		event.stopImmediatePropagation();
-	}
+	}*/
 });
+// 
 Template.highlight.helpers({
 	'mine':function(){
 		return(Meteor.userId() == this.creator ? true : false);

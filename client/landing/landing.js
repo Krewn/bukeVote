@@ -1,21 +1,3 @@
-
-/*Tracker.autorun(function(){
-	window.scrollTo(0,document.body.scrollHeight);
-});*/
-
-/*let DBThrough = function(){
-	let fills = document.getElementsByClassName("DBdirect");
-	alert("...");
-	let arrayLength = fills.length;
-	for (let i = 0; i < arrayLength; i++) {
-		fills[i].innerHTML = fills[i].getAttribute('data-content');
-		let nodes = fills[i].getElementsByTagName('*');
-		for(var j = 0; j < nodes.length; i++){
-			j.disabled = true;
-		}
-	}
-}*/
-
 Template.landing.onCreated(function _OnCreated() {
 	this.query = new ReactiveVar();
 	this.query.set([]);
@@ -30,7 +12,7 @@ Template.landing.onRendered(function _OnCreated() {
 });
 
 Template.landing.events({
-	'click #searchButton' : function(event, template) {
+	'click #searchButton' : function(event, template) {// CheckBox and Keyword Filter
 		let includeBills = template.find("#BillsSelector").checked;
 		let includeComments  = template.find("#CommentsSelector").checked;
 		let includeVotes  = template.find("#VotesSelector").checked;
@@ -58,12 +40,10 @@ Template.landing.events({
 		template.expression.set(searchExpression);
 		template.FileHandle.set(false);
 	},
-	'click .itemButton' : function(event, template){
+	'click .itemButton' : function(event, template){ // sets the focused document equal to the clicked documet
 		template.FileHandle.set(event.currentTarget.getAttribute('data-id'));
-		//DBThrough();
-		//template.h.set(items.find({'type':"annotation",'usrId':Meteor.userId(),'doc':template.FileHandle.get()}));
 	},
-	'click .annotatable' : function(event , template){
+	'click .annotatable' : function(event , template){ // .annotatable i.e. the thing you highlight
 		let t = document.getSelection();
 		if(t!="" && event.currentTarget.getAttribute('data-type')=="document"){
 			let temp = template.FileHandle.get();
@@ -78,22 +58,16 @@ Template.landing.events({
 			};
 			Meteor.call('insertAnnotation',elm);
 			alert("Noted:"+String(t));
-		}else{//String(event.currentTarget.getAttribute('data-type'))=="annotation"||"vote"||"comment"
+		}else{
 			if(this.type != "document"){
 				template.FileHandle.set(event.currentTarget.getAttribute('data-id'));
 			}
 		}	
 		event.stopImmediatePropagation();
-	},
-	/*"mouseenter .materialSpan":function(event, tempalte){
-		event.target.setAttribute('data-focused',true);
-	},
-	"mouseleave .materialSpan":function(event, tempalte){
-		event.target.setAttribute('data-focused',false);
-	}*/
+	}
 });
 Template.landing.helpers({
-	"foundItem": function(Tempalte){
+	"foundItem": function(Tempalte){//gets querry results.
 		return(items.find({
 			$and:[ 
 				{'type':{$in:Template.instance().query.get()}},
@@ -104,13 +78,11 @@ Template.landing.helpers({
 			]
 		}));
 	},
-	"UserFocus": function(Tempalte){
+	"UserFocus": function(Tempalte){//A boolean to indicate if a single item is selected(true) or if search is being displayed (false)
 		return(Template.instance().FileHandle.get()!=false);
 	},
-	"GetFocus": function(){
-		//alert("reactive f Valiue:"+Template.instance().FileHandle.get());
+	"GetFocus": function(){//gets a single document wrapped in a cursor [elm]
 		return(items.find({'_id':Template.instance().FileHandle.get()}));
-		//return(items.find({'_id':{$exists:1}}));
 	}
 });
 
@@ -208,4 +180,4 @@ for( var k in matchArg){
 		searchText = String(searchText).replace(" ", "|");
 		let SearchQuerry = new RegExp(searchText,"i");
 		Meteor.subscribe('Feed',PipeLine,SearchQuerry);
-	}*/
+	}*/ // I was thinking about it...

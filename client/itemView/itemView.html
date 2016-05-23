@@ -15,24 +15,18 @@
 		{{#if contentComment}}
 			{{{title}}}
 		{{/if}}
+		<!-- 
+		Adjust above to set what gets rendered as {{escaped text}} and what gets rendered as {{{html}}}.
+		!-->
 	</span><br>
-	{{#if isUsersContent}}
-		<!--<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
-		<span class="HideComments materialSpan" data-id="{{_id}}">HideComments</span>
-		<span class="newComment materialSpan" data-id="{{_id}}">Comment</span>
-		<span class="delete materialSpan" data-id="{{_id}}">delete</span>
-		<span class="updateButton materialSpan" data-id="{{_id}}">save</span>!-->
-	{{else}}
-		<!--<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
-		<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
-		<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
-		<span class="HideComments materialSpan" data-id="{{_id}}">HideComments</span>
-		<span class="newComment materialSpan" data-id="{{_id}}">Comment</span>!-->
-	{{/if}}
 	{{>interactButtons}}
 	{{#if showComments}}
 		<div id = "feed">
 			<h3>Peanuts:</h3>
+					<!-- 
+					The same distinction is made {{escaped text}} and what gets rendered as {{{html}}} 
+					in the highlight and comment template.
+					!-->
 				{{#each GetMyHighlights}}
 					{{>highlight}}
 				{{/each}}

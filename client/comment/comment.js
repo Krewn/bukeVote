@@ -1,46 +1,11 @@
 
 //comment
-/*Tracker.autorun(function(){
-	alert("lmao");
-	window.scrollTo(0,document.body.scrollHeight);
-});*/
-
 Template.comment.onCreated(function _OnCreated() {
-	//this.dispcom = new ReactiveDict();
-	//this.dispcom.set(this._id,false);
 });
 Template.comment.events({
-	/*'click .commentUpdateButton' : function(event, template){
-		Meteor.call('contentUpdate',{
-			'_id':this._id
-			},{
-			$set:{'title':document.querySelector(".commentSpan[data-id='"+this._id+"']").innerHTML}
-		});
-		event.stopImmediatePropagation();
-	},
-	'click .ShowComments': function(event,template){
-		template.dispcom.set(this._id,true);
-		event.stopImmediatePropagation();
-	},
-	'click .HideComments': function(event,template){
-		template.dispcom.set(this._id,false);
-		event.stopImmediatePropagation();
-	},
-	'click .newCommentc': function(event,template){
-		let commElm = {
-			'target': this._id,
-			'creator': Meteor.userId(),
-			'title': "...",
-			'ups': [],
-			'downs':[],
-			'comments':[]
-		};
-		Meteor.call('insertComment',commElm,this._id);
-		template.dispcom.set(this._id,true);
-		event.stopImmediatePropagation();
-	}*/
 });
 Template.comment.helpers({
+	//not totally dry, I think some of these methods are redundant...
 	'isUsersComment': function(){
 			return(Meteor.userId() == this.creator ? true : false);
 	},

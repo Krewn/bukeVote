@@ -1,5 +1,5 @@
 
-//itemView
+//itemView 
 Template.itemView.onCreated(function _OnCreated() {
 	this.dispcom = new ReactiveDict();
 	this.dispcom.set(this._id,false);
@@ -7,6 +7,8 @@ Template.itemView.onCreated(function _OnCreated() {
 Template.itemView.events({
 	
 });
+//When Looking at an item we need to get all the things that can be attached to it, ownership comments etc, 
+//For such things we have these helpers.
 Template.itemView.helpers({
 	'isUsersContent': function(){
 		return(Meteor.userId() == this.creator ? true : false);

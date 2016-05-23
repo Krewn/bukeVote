@@ -1,5 +1,7 @@
 
 //interactButtons
+//I Think the method names would be obscured by comments here...
+
 Template.interactButtons.onCreated(function _OnCreated() {
 	this.dispcom = new ReactiveDict();
 	this.dispcom.set(this._id,false);
