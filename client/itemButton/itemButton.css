@@ -4,6 +4,11 @@
 	background-color:lightblue;
 	transition: color  .2s ease;
 }
+.itemButton[class~="document"]{
+	/*-ms-transform: scale(0.5,0.5);*/ /* IE 9 */
+    /*-webkit-transform: scale(0.5,0.5);*/ /* Chrome, Safari, Opera */
+    /*transform: scale(0.5,0.5);*/
+}
 .itemButton{
 	background-color:lightgrey;
 	transition: color  .3s ease;

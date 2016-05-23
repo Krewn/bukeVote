@@ -24,6 +24,7 @@ Template.landing.onCreated(function _OnCreated() {
 	this.expression = new ReactiveVar();
 	const handle = Meteor.subscribe("Feed");
 });
+
 Template.landing.onRendered(function _OnCreated() {
 	 document.getElementById("searchButton").click();
 });
@@ -76,6 +77,7 @@ Template.landing.events({
 				'tstamp': new Date()
 			};
 			Meteor.call('insertAnnotation',elm);
+			alert("Noted:"+String(t));
 		}else{//String(event.currentTarget.getAttribute('data-type'))=="annotation"||"vote"||"comment"
 			if(this.type != "document"){
 				template.FileHandle.set(event.currentTarget.getAttribute('data-id'));

@@ -5,44 +5,7 @@ Template.itemView.onCreated(function _OnCreated() {
 	this.dispcom.set(this._id,false);
 });
 Template.itemView.events({
-	'click .updateButton' : function(event, template){
-		//if(event.target.getAttribute('data-focused')=="true"){
-			//alert(document.querySelector(".annotationSpan[data-id='"+event.target.getAttribute('data-id')+"']").innerHTML);
-			Meteor.call('contentUpdate',{
-				'_id':event.target.getAttribute('data-id')
-				},{
-				$set:{'content':document.querySelector(".annotationSpan[data-id='"+event.target.getAttribute('data-id')+"']").innerHTML}
-			});
-			event.stopImmediatePropagation();
-		//}
-	},
-	'click .ShowComments': function(event,template){
-		//alert("happens");
-		//let temp = template.dispcom.get()?false:true;
-		template.dispcom.set(this._id,true);
-		event.stopImmediatePropagation();
-	},
-	'click .HideComments': function(event,template){
-		//alert("happens");
-		//let temp = template.dispcom.get()?false:true;
-		template.dispcom.set(this._id,false);
-		event.stopImmediatePropagation();
-	},
-	'click .newComment': function(event,template){
-		//if(event.target.getAttribute('data-focused')=="true"){
-			let commElm = {
-				'target': event.target.getAttribute('data-id'),
-				'creator': Meteor.userId(),
-				'title': "...",
-				'ups': [],
-				'downs':[],
-				'comments':[]
-			};
-			Meteor.call('insertComment',commElm,event.target.getAttribute('data-id'));
-			template.dispcom.set(this._id,true);
-			event.stopImmediatePropagation();
-		//}
-	},
+	
 });
 Template.itemView.helpers({
 	'isUsersContent': function(){
@@ -65,7 +28,7 @@ Template.itemView.helpers({
 		return(this.type=="comment");
 	},	
 	'showComments':function(){
-		return(Template.instance().dispcom.get(this._id));
+		return(Session.get("show:"+this._id));
 	},
 	"GetMyHighlights":function(){
 		return(items.find({'type':"annotation",'creator':Meteor.userId(),'target':this._id}));

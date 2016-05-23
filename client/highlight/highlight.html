@@ -8,13 +8,6 @@
 			<span contenteditable="true" class="annotationSpan" data-id="{{_id}}">
 				{{{content}}}
 			</span><br>
-			<span class="delete materialSpan" data-id="{{_id}}">delete</span>
-			<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
-			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
-			<span class="updateButton materialSpan" data-id="{{_id}}">save</span>
-			<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
-			<span class="HideComments materialSpan" data-id="{{_id}}">HideComments</span>
-			<span class="newCommenta materialSpan" data-id="{{_id}}">Comment</span>
 		{{else}}
 			<span class = "{{type}}">
 				{{{title}}}
@@ -22,12 +15,8 @@
 			<span>
 				{{content}}
 			</span><br>
-			<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
-			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
-			<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
-			<span class="HideComments materialSpan" data-id="{{_id}}">HideComments</span>
-			<span class="newCommenta materialSpan" data-id="{{_id}}">Comment</span>
 		{{/if}}
+		{{>interactButtons}}
 		{{#if showComments}}
 			{{#each getComments}}
 				{{>comment}}
