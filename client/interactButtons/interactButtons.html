@@ -2,15 +2,15 @@
 	<span data-lable = "interactButtons" data-id = "{{_id}}">
 		{{#if isUsersComment}}
 			<span class="updateButton materialSpan" data-id="{{_id}}">save</span>
-			<span class="delete materialSpan" data-id="{{_id}}">delete</span>
 		{{else}}
 			<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
 			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
-			<span class="render materialSpan" data-id="{{_id}}">Render</span>
 		{{/if}}
-			<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
+		<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
 		{{#if currentUser}}
+			<span class="delete materialSpan" data-id="{{_id}}">delete</span>
 			<span class="newComment materialSpan" data-id="{{_id}}">Comment</span>
 		{{/if}}
+		<span class="render materialSpan" data-id="{{_id}}">Render</span>
 	</span>
 </template>

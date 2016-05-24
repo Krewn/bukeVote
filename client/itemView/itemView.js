@@ -32,6 +32,9 @@ Template.itemView.helpers({
 	'showComments':function(){
 		return(Session.get("show:"+this._id));
 	},
+	'render':function(){
+		return(Session.get("render:"+this._id));
+	},
 	"GetMyHighlights":function(){
 		return(items.find({'type':"annotation",'creator':Meteor.userId(),'target':this._id}));
 	},	

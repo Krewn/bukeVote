@@ -1,28 +1,8 @@
 <template name = "itemView" >
-	<span class = "annotatable" data-type = {{type}} data-id = {{target}}>
-		{{#if contentDocument}}
-			{{{title}}}
-			{{{content}}}
-		{{/if}}
-		{{#if contentAnnotation}}
-			{{{title}}}
-			{{{content}}}
-		{{/if}}
-		{{#if contentVote}}
-			{{{title}}} <!-- TODO !-->
-			{{{content}}} 
-		{{/if}}
-		{{#if contentComment}}
-			{{{title}}}
-		{{/if}}
-		<!-- 
-		Adjust above to set what gets rendered as {{escaped text}} and what gets rendered as {{{html}}}.
-		!-->
-	</span><br>
 	{{>interactButtons}}
 	{{#if showComments}}
 		<div id = "feed">
-			<h3>Peanuts:</h3>
+			<h3>Peanut Gallery:</h3>
 					<!-- 
 					The same distinction is made {{escaped text}} and what gets rendered as {{{html}}} 
 					in the highlight and comment template.
@@ -50,4 +30,42 @@
 			</div>
 		</div>
 	{{/if}}
+	<span class = "annotatable" data-type = {{type}} data-id = {{target}}>
+		{{#if render}}
+			{{#if contentDocument}}
+				{{{title}}}
+				{{{content}}}
+			{{/if}}
+			{{#if contentAnnotation}}
+				{{{title}}}
+				{{{content}}}
+			{{/if}}
+			{{#if contentVote}}
+				{{{title}}} <!-- TODO !-->
+				{{{content}}}
+			{{/if}}
+			{{#if contentComment}}
+				{{{title}}}
+			{{/if}}
+		{{else}}
+			{{#if contentDocument}}
+				{{title}}
+				{{content}}
+			{{/if}}
+			{{#if contentAnnotation}}
+				{{title}}
+				{{content}}
+			{{/if}}
+			{{#if contentVote}}
+				{{title}} <!-- TODO !-->
+				{{content}} 
+			{{/if}}
+			{{#if contentComment}}
+				{{title}}
+			{{/if}}
+		{{/if}}
+		<!-- 
+		Adjust above to set what gets rendered as {{escaped text}} and what gets rendered as {{{html}}}.
+		!-->
+	</span>
 </template>
