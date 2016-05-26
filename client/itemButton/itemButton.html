@@ -1,5 +1,9 @@
 <template name = "itemButton" >
 	<div class = "itemButton {{type}}" data-id = {{_id}}>
-		{{title}}
+		{{#if contentDocument}}
+			{{{title}}}
+		{{else}}
+			{{title}}
+		{{/if}}
 	</div>
 </template>
