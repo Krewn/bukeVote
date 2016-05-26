@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">!-->
+        <style>
+        </style>
+        <!--<link rel="stylesheet" type="text/css" href="./mypage.css"> !-->
+        <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                color: #000;
+                font-family:Monospace;
+                font-size:19px;
+                text-align:left;
+
+                background-color: #fff;
+                margin: 0px;
+                overflow: hidden;
+            }
+            canvas{
+                opacity: 0.0;
+                transition: opacity 9.0s ease-in;
+            }
+            canvas:hover{
+                opacity: 1.0;
+                transition: opacity 1.0s ease-in;
+            }
+
+            div{
+                margin-top:1px;
+                margin-bottom:1px;
+                padding-right:3px;
+                padding-left:3px;
+                margin-left:3px;
+                opacity: 0.95;
+            }
+            #langsAndLinks{
+            }
+            .ClearShadeLeft{
+                border-left: 2px solid #CCCCCC;
+                position: absolute;
+                z-index:1;
+            }
+            .blue1{
+                background-color: ghostwhite;
+                border-right: 2px solid #CCCCCC;
+            }
+            .blue2{
+                padding-left: 25px;
+                background-color: darkkhaki;
+                border-right: 2px solid #AAAAAA;
+            }
+            .blue3{
+                background-color: darkkhaki;
+                text-align: center;
+                padding-top: 1px;
+                float:right;
+                border-right: 2px solid #AAAAAA;
+            }
+            h1{
+                margin-top:1px;
+                margin-bottom:-10px;
+                margin-right:0px;
+                margin-left:10px;
+                font-family: 'Arvo', serif;
+            }
+            h2{
+                margin-top:0px;
+                margin-bottom:-20px;
+                margin-right:0px;
+                margin-left:10px;
+                font-family: 'Arvo', serif;
+            }
+            a{
+                margin-left:0px;
+                margin-right:10px;
+                font-family: 'Arvo', serif;
+            }
+            font{
+                margin-top:0px;
+                margin-bottom:0px;
+                margin-left:30px;
+                margin-right:10px;
+                font-family: 'Arvo', serif;
+            }
+
+            .icon-link{
+                padding-left: 2px;
+                padding-right: 2px;
+                transition: padding-right  .3s ease;
+                transition: padding-left  .3s ease;
+                transition: color  .3s ease;
+            }
+
+            .icon-link, icon-link:visited{
+                color: #ecf0f1;
+            }
+            .icon-link:hover{
+                color: #2980b9;
+                padding-left: 8px;
+                padding-right: 8px;
+                transition: color  .3s ease;
+                transition: padding-right  .3s ease;
+                transition: padding-left  .3s ease;
+                
+            }
+
+            #fl{
+                float : left;
+            }
+            #fr{
+                float : right;
+            }
+            #fc{
+                float : center;
+            }
+        </style>
+    </head>    
+    <body>
+    
+        <div class = "ClearShadeLeft">
+            <div class="blue1" id = "infoDiv">
+                    <h1 id = "nameHeader">
+                        Vute & BukeVote
+                    </h1><br>
+            </div>
+        
+            <div id = "langsAndLinks">
+                <div class = "blue2" id = "pro">
+                    <h2 id = "WebDev"> What is it? </h2><br>
+                    <font>At the moment it is</font><a href = "vute.herokuapp.com">Vute</a>
+                </div><br>
+                <div class = "blue2" id = "pro">
+                    <h2 id = "WebDev"> What is Vute? </h2><br>
+					<font style="font-weight: bold">The site is intended to provide rooted discussions with rich formatting.</font><br>
+					<font>Users are able to paste in formatted responses with images from the </font><br>
+					<font>internet, links, etc. into their comment space, and that formatting is</font><br>
+					<font>preserved (to some extent) in the rendered version of the comment.</font><br>
+                </div><br>
+			    <div class = "blue2" id = "pro">
+                    <h2 id = "WebDev"> Annotation </h2><br>
+						<font style="font-weight: bold">Annotations are made my highlighting part of a root document.</font><br>
+						<font>Root content is any document found in the category “baseContent”</font><br>
+						<font>Each annotation provides a space for the user who selected the section</font><br>
+						<font>to mention briefly why they noted it.</font><br><br>
+
+						<font>When making annotations an alert will appear on your screen.</font><br>
+						<font>The space for your comment is filled with a … placeholder until you</font><br>
+						<font>provide some content.</font><br>
+                </div><br>
+				<div class = "blue2" id = "pro">
+					<font style="font-weight: bold">Don’t forget to save your comments!</font><br>
+					<a href = "vute.herokuapp.com">GoVute!</a>
+                </div><br>
+                <div class="blue1" id = "infoDiv">
+                    <font><a href="https://krewn.github.io">Krewn</a></font>
+                    <font><a href="mailto:kpie314@gmail.com">Contact</a></font>
+                </div><br>
+            </div>
+            
+            <a href="https://krewn.github.io/ApophysisOutPuts/">Desktop Backgrounds</a>
+
+        </div><br>
+    </body>        
+</html>
