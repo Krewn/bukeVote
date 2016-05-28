@@ -3,7 +3,11 @@
 		{{#if contentDocument}}
 			{{{title}}}
 		{{else}}
-			{{title}}
+			{{#if contentAnnotation}}
+				{{{title}}}
+			{{else}}
+				{{title}}
+			{{/if}}
 		{{/if}}
 	</div>
 </template>
