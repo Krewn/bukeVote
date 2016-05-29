@@ -1,7 +1,7 @@
 
 //interactButtons
 //I Think the method names would be obscured by comments here...
-
+		
 Template.interactButtons.onCreated(function _OnCreated() {
 	this.dispcom = new ReactiveDict();
 	this.dispcom.set("show:"+this._id,false);
@@ -63,6 +63,10 @@ Template.interactButtons.events({
 	},
 	'click .delete': function(event,template){
 		Meteor.call('delete',this._id);
+	},
+	'click .GetURL': function(event,template){
+		let itemUrl = window.location.origin+"/"+this._id
+		window.open(itemUrl, this.type, "height=600,width=400");
 	}
 });
 Template.interactButtons.helpers({

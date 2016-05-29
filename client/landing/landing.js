@@ -5,10 +5,14 @@ Template.landing.onCreated(function _OnCreated() {
 	this.FileHandle.set(false);
 	this.expression = new ReactiveVar();
 	const handle = Meteor.subscribe("Feed");
+	this.FileHandle.set(Session.get("File_Handle_Document_Target_ID_For_Buke_Langing"));	 
+	Session.set("File_Handle_Document_Target_ID_For_Buke_Langing",false);
 });
 
 Template.landing.onRendered(function _OnCreated() {
-	 document.getElementById("searchButton").click();
+	if (this.FileHandle.get()==false || this.FileHandle.get()==null){
+		document.getElementById("searchButton").click();
+	}
 });
 
 Template.landing.events({
