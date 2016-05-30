@@ -33,15 +33,15 @@
 	<span class = "annotatable" data-type = {{type}} data-id = {{target}}>
 		{{#if render}}
 			{{#if contentDocument}}
-				{{{title}}}
+				{{{title}}}<br>
 				{{{content}}}
 			{{/if}}
 			{{#if contentAnnotation}}
-				{{{title}}}
+				{{{title}}}<br>
 				{{{content}}}
 			{{/if}}
 			{{#if contentVote}}
-				{{{title}}} <!-- TODO !-->
+				{{{title}}} <br>
 				{{{content}}}
 			{{/if}}
 			{{#if contentComment}}
@@ -49,15 +49,15 @@
 			{{/if}}
 		{{else}}
 			{{#if contentDocument}}
-				{{title}}
-				{{content}}
+				{{{title}}}<br>
+				{{{content}}}
 			{{/if}}
 			{{#if contentAnnotation}}
-				{{title}}
+				{{title}}<br>
 				{{content}}
 			{{/if}}
 			{{#if contentVote}}
-				{{title}} <!-- TODO !-->
+				{{title}} <br>
 				{{content}} 
 			{{/if}}
 			{{#if contentComment}}

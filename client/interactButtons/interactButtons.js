@@ -66,7 +66,7 @@ Template.interactButtons.events({
 	},
 	'click .GetURL': function(event,template){
 		let itemUrl = window.location.origin+"/"+this._id
-		window.open(itemUrl, this.type, "height=600,width=400");
+		window.open(itemUrl);
 	}
 });
 Template.interactButtons.helpers({
