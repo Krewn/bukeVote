@@ -73,5 +73,11 @@ Template.interactButtons.helpers({
 	'isUsersComment': function(){
 		return(Meteor.userId() == this.creator ? true : false);
 	},
+	'likes': function(){
+		return(this.ups.length);
+	},
+	'dislikes': function(){
+		return(this.downs.length);
+	}
 });
 

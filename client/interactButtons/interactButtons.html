@@ -3,8 +3,8 @@
 		{{#if isUsersComment}}
 			<span class="updateButton materialSpan" data-id="{{_id}}">save</span>
 		{{else}}
-			<span class="upIt materialSpan" data-id="{{_id}}">Approve</span>
-			<span class="downIt materialSpan" data-id="{{_id}}">Disapprove</span>
+			<span class="upIt materialSpan" data-id="{{_id}}">{{likes}} Approve</span>
+			<span class="downIt materialSpan" data-id="{{_id}}">{{dislikes}} Disapprove</span>
 		{{/if}}
 		<span class="ShowComments materialSpan" data-id="{{_id}}">ShowComments</span>
 		{{#if currentUser}}
