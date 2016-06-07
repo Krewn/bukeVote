@@ -4,6 +4,10 @@ mark.myComment{
 div.comment{
 	background-color: ghostwhite;
 }
+div.indent{
+	margin: 0.2cm 0.1cm 0.2cm 0.4cm;
+    	border-right: 2px solid #878787;
+}
 /* 
 
 I've been told the site looks pretty bad. 

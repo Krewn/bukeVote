@@ -2,12 +2,12 @@
     width: auto;
 	/*height: 55vh;*/
     background: lightslategray;
-	background-color: lightslategray;
+    background-color: lightslategray;
 	/*box-shadow: -1px -1px 3px grey;*/
 }
 #feed{
 	width: auto;
-    overflow: hidden;
+	overflow: hidden;
 	background: ghostwhite;
 	background-color: ghostwhite;
 	height: auto;
@@ -15,16 +15,13 @@
 #find{
 	float: right;
 	background-color: lightgrey;
-	box-shadow: -1px 1px 3px grey;
 }
 #profile{
 	
 }
-.comment{
-		margin: 0.2cm 0.2cm 0.2cm 0.4cm;
-}
 .annotation{
-		margin: 0.1cm 0.1cm 0.1cm 0.2cm;
+	padding: 0.2cm;
+	background-color: lightgrey;	
 }
 .container {
    height: auto;
@@ -39,11 +36,15 @@
 }
 .materialSpan:hover{
 	background-color: tomato;
+	margin: 0.0cm 0.2cm 0.2cm 0.2cm;
+	transition: margin .2s ease;
 }
 .materialSpan{
 	box-shadow: 1px 1px 3px grey;
 	background-color: tan;
 	transition: background-color  .2s ease;
+	transition: margin .2s ease;
+	margin: 0.0cm 0.0cm 0.2cm 0.0cm;
 }
 /*.annotation{
 	background-color: tomato;

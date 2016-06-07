@@ -44,8 +44,13 @@ Template.landing.events({
 		template.expression.set(searchExpression);
 		template.FileHandle.set(false);
 	},
-	'click .itemButton' : function(event, template){ // sets the focused document equal to the clicked documet
+	'click .itemButton' : function(event, template){ 
+		// sets the focused document equal to the clicked documet
 		template.FileHandle.set(event.currentTarget.getAttribute('data-id'));
+		//parent.location.hash = event.currentTarget.getAttribute('data-id');
+		history.pushState({"vute":event.currentTarget.getAttribute('data-id')},
+			"vute",
+			event.currentTarget.getAttribute('data-id'));
 	},
 	'click .annotatable' : function(event , template){ // .annotatable i.e. the thing you highlight
 		let t = document.getSelection();
@@ -76,8 +81,10 @@ Template.landing.helpers({
 			$and:[ 
 				{'type':{$in:Template.instance().query.get()}},
 				{$or:[
-					{content: { $regex: Template.instance().expression.get(), $options: 'i' } },
-					{title:   { $regex: Template.instance().expression.get(), $options: 'i' }}
+					{content: { $regex: Template.instance().expression.get(),
+ $options: 'i' } },
+					{title:   { $regex: Template.instance().expression.get(),
+ $options: 'i' }}
 				]}
 			]
 		}));

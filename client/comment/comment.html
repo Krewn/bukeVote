@@ -1,20 +1,22 @@
 <template name = "comment" >
-	<div class="comment">
-		<h4>User:: {{creator}} Says:</h4>
-		{{#if isUsersComment}}
-			<mark class = "myComment">
-				<span contenteditable="true" class="commentSpan" data-id="{{_id}}">
-					{{{title}}}
-				</span><br>
-			</mark>
-		{{else}}
-			{{#if rendered}}
-				<br><span class="commentSpan" data-id="{{_id}}">{{{title}}}</span><br>
+	<div class = "indent">
+		<div class="comment">
+			<h4>User:: {{creator}} Says:</h4>
+			{{#if isUsersComment}}
+				<mark class = "myComment">
+					<span contenteditable="true" class="commentSpan" data-id="{{_id}}">
+						{{{title}}}
+					</span><br>
+				</mark>
 			{{else}}
-				<br><span class="commentSpan" data-id="{{_id}}">{{title}}</span><br>
+				{{#if rendered}}
+					<br><span class="commentSpan" data-id="{{_id}}">{{{title}}}</span><br>
+				{{else}}
+					<br><span class="commentSpan" data-id="{{_id}}">{{title}}</span><br>
+				{{/if}}
 			{{/if}}
-		{{/if}}
-		{{>interactButtons}}
+			{{>interactButtons}}
+		</div>
 		{{#if showComments}}
 			{{#each getComments}}
 				{{>comment}}

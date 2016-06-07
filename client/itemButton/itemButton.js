@@ -4,5 +4,8 @@ Template.itemButton.helpers({
 	},
 	'contentAnnotation': function(){
 		return(this.type=="annotation");
+	},
+	'itemUrl': function(){
+		return(window.location.origin+"/"+this._id);
 	}
 });

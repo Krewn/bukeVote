@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 /*
 ||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||
-||		Author  : Kevin Nelson              ||
-||		Program : Interact_BackEnd          ||
+||		Author  : Kevin Nelson      ||
+||		Program : Interact_BackEnd  ||
 ||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||
 */
 Meteor.users.deny({
